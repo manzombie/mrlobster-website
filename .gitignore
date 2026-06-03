@@ -8,3 +8,6 @@ assets/show/og-banner.png
 # OS
 .DS_Store
 Thumbs.db
+# OS
+# Cast source PNGs
+assets/show/cast/*.png
