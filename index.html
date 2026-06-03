@@ -102,8 +102,8 @@ nav{position:sticky;top:0;z-index:100;background:rgba(14,23,38,.78);backdrop-fil
   background:repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0,rgba(255,255,255,.018) 1px,transparent 1px,transparent 3px);
   mix-blend-mode:overlay;
 }
-.hero-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:center;position:relative;z-index:1}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:40px;text-align:center}.hero{padding:56px 0 72px}}
+.hero-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:center;position:relative;z-index:1}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:32px;text-align:center}.hero{padding:56px 0 56px}}
 
 .hero h1{color:var(--cream)}
 .hero h1 .accent{color:var(--coral);font-style:italic}
@@ -117,30 +117,28 @@ nav{position:sticky;top:0;z-index:100;background:rgba(14,23,38,.78);backdrop-fil
 .hero-nudge .arr{display:inline-block;transition:transform .2s}
 .hero-nudge:hover .arr{transform:translateY(3px)}
 
-/* hero portrait — circular, neon-glow */
-.hero-portrait{position:relative;display:flex;justify-content:center;align-items:center}
-.portrait-frame{
-  position:relative;width:min(300px,62vw);aspect-ratio:1;
-  border-radius:50%;overflow:hidden;
-  background:#0E1726;
-  box-shadow:
-    0 0 0 6px rgba(255,255,255,.04),
-    0 0 0 7px rgba(255,107,91,.35),
-    0 0 60px rgba(255,58,160,.35),
-    0 0 120px rgba(58,181,224,.18),
-    0 30px 60px -10px rgba(0,0,0,.5);
-  animation:portraitGlow 6s ease-in-out infinite;
+/* hero turntable — scroll-driven character animation */
+.hero-figure{position:relative;display:flex;justify-content:center;align-items:center}
+.turntable{
+  position:relative;width:100%;max-width:660px;aspect-ratio:620/348;
+  animation:float 6s ease-in-out infinite;
 }
-.portrait-frame img{width:100%;height:100%;object-fit:cover;object-position:center 22%}
-@keyframes portraitGlow{
-  0%,100%{box-shadow:0 0 0 6px rgba(255,255,255,.04),0 0 0 7px rgba(255,107,91,.35),0 0 60px rgba(255,58,160,.35),0 0 120px rgba(58,181,224,.18),0 30px 60px -10px rgba(0,0,0,.5)}
-  50%{box-shadow:0 0 0 6px rgba(255,255,255,.04),0 0 0 7px rgba(255,107,91,.55),0 0 80px rgba(255,58,160,.5),0 0 140px rgba(58,181,224,.28),0 30px 60px -10px rgba(0,0,0,.5)}
+.turntable canvas{
+  width:100%;height:100%;display:block;
+  filter:
+    drop-shadow(0 6px 18px rgba(0,0,0,.45))
+    drop-shadow(0 0 22px rgba(255,107,91,.35))
+    drop-shadow(0 0 40px rgba(255,58,160,.22));
 }
-.spotlight{position:absolute;width:120px;height:200px;background:radial-gradient(ellipse at top,rgba(255,255,255,.22),transparent 60%);filter:blur(20px);pointer-events:none}
-.spotlight.l{top:-40px;left:-10px;transform:rotate(-18deg)}
-.spotlight.r{top:-40px;right:-10px;transform:rotate(18deg)}
+.turntable::before{
+  content:"";position:absolute;inset:auto 8% -6% 8%;height:24px;
+  background:radial-gradient(ellipse at center,rgba(0,0,0,.55),transparent 70%);
+  filter:blur(8px);z-index:-1;
+}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@media(max-width:900px){.turntable{max-width:520px}}
 
-/* on-air badge over portrait */
+/* on-air badge — reusable, used on the pilot stage */
 .on-air{position:absolute;top:18px;right:18px;background:var(--coral-deep);color:white;padding:6px 12px;border-radius:100px;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 4px 14px rgba(232,85,58,.45);display:inline-flex;align-items:center;gap:7px;z-index:2}
 .on-air::before{content:"";width:8px;height:8px;background:white;border-radius:50%;box-shadow:0 0 8px white;animation:pulse 1.6s infinite}
 
@@ -425,11 +423,9 @@ footer::before{
       </div>
       <a class="hero-nudge" href="#live">Three ways to reach him <span class="arr">↓</span></a>
     </div>
-    <div class="hero-portrait">
-      <span class="on-air">On air</span>
-      <span class="spotlight l"></span><span class="spotlight r"></span>
-      <div class="portrait-frame">
-        <img src="mr-lobster.jpg" alt="Mr Lobster — an anthropomorphic lobster character wearing a black fedora, sunglasses, gold chain and pocket-watch pendant" loading="eager">
+    <div class="hero-figure">
+      <div class="turntable">
+        <canvas id="lobster-turntable" width="620" height="348" aria-label="Mr Lobster, an anthropomorphic lobster character lounging on a deck chair with a cocktail and a laptop"></canvas>
       </div>
     </div>
   </div>
@@ -490,6 +486,7 @@ footer::before{
     </div>
 
     <figure class="show-stage" aria-label="Opening scene from the pilot of What's Up Mr Lobster?">
+      <span class="on-air">On air</span>
       <video
         src="assets/show/video/scene1.mp4"
         poster="assets/show/video/scene1-poster.jpg"
@@ -667,5 +664,56 @@ footer::before{
   </a>
 </div>
 
+<script>
+// Scroll-driven lobster turntable. 58 frames, one full 360° per ~900px scroll.
+(function(){
+  const TOTAL = 58;
+  const SCROLL_PER_ROTATION = 900;
+  const canvas = document.getElementById('lobster-turntable');
+  if (!canvas) return;
+
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  function resize(){
+    const r = canvas.getBoundingClientRect();
+    canvas.width = Math.round(r.width * dpr);
+    canvas.height = Math.round(r.height * dpr);
+    drawFrame(lastFrame >= 0 ? lastFrame : 0);
+  }
+
+  const frames = new Array(TOTAL);
+  let loaded = 0;
+  for (let i = 0; i < TOTAL; i++) {
+    const img = new Image();
+    img.decoding = 'async';
+    img.src = 'assets/turntable/lobster_' + String(i).padStart(4,'0') + '.webp';
+    img.onload = () => { loaded++; if (loaded === 1) { resize(); } };
+    frames[i] = img;
+  }
+
+  const ctx = canvas.getContext('2d');
+  let lastFrame = -1;
+  function drawFrame(idx){
+    const f = frames[idx];
+    if (!f || !f.complete || !f.naturalWidth) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(f, 0, 0, canvas.width, canvas.height);
+    lastFrame = idx;
+  }
+
+  let ticking = false;
+  function onScroll(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const idx = ((Math.floor((window.scrollY / SCROLL_PER_ROTATION) * TOTAL) % TOTAL) + TOTAL) % TOTAL;
+      if (idx !== lastFrame) drawFrame(idx);
+      ticking = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', resize, {passive:true});
+  window.addEventListener('load', () => { resize(); onScroll(); });
+})();
+</script>
 </body>
 </html>
