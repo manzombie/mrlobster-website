@@ -302,21 +302,6 @@ nav{position:sticky;top:0;z-index:100;background:rgba(14,23,38,.78);backdrop-fil
 .cast-portrait .world-tag.real{background:rgba(58,181,224,.85);border-color:transparent}
 .cast-portrait .world-tag.fantasy{background:rgba(255,58,160,.85);border-color:transparent}
 .cast-portrait .world-tag.both{background:linear-gradient(90deg,rgba(58,181,224,.9),rgba(255,58,160,.9));border-color:transparent}
-.cast-portrait .world-tag.amb{background:rgba(200,155,60,.88);border-color:transparent}
-
-.cast-clam{
-  display:flex;align-items:center;justify-content:center;
-  background:
-    radial-gradient(circle at 50% 40%,rgba(200,155,60,.22),transparent 70%),
-    linear-gradient(180deg,#1a1410 0%,#0E1726 100%);
-  font-size:5.5rem;line-height:1;
-  filter:saturate(.9);
-}
-.cast-clam::after{
-  content:"";position:absolute;inset:0;
-  background:repeating-linear-gradient(0deg,rgba(255,255,255,.04) 0,rgba(255,255,255,.04) 1px,transparent 1px,transparent 3px);
-  pointer-events:none;
-}
 
 .cast-body{padding:22px 22px 24px}
 .cast-name{font-family:'DM Serif Display',Georgia,serif;font-size:1.35rem;font-weight:400;letter-spacing:-.01em;color:var(--ink);line-height:1.1}
@@ -478,8 +463,8 @@ footer{background:var(--navy);color:rgba(251,246,237,.72);padding:48px 0 36px;bo
   <div class="container">
     <div class="cast-header">
       <span class="eyebrow">The Cast</span>
-      <h2 id="cast-title">Six characters. <span class="accent">One universe.</span></h2>
-      <p>Three real. Two fantasy. One ambiguous. Mr Lobster lives in both worlds &mdash; everyone else picks a side.</p>
+      <h2 id="cast-title">Five characters. <span class="accent">One universe.</span></h2>
+      <p>Three real. Two fantasy. Mr Lobster lives in both worlds &mdash; everyone else picks a side.</p>
     </div>
 
     <div class="cast-grid">
@@ -526,15 +511,6 @@ footer{background:var(--navy);color:rgba(251,246,237,.72);padding:48px 0 36px;bo
           <h3 class="cast-name">Lance Beaumont</h3>
           <span class="cast-role">Talk Show Host · Lobster Late Night</span>
           <p class="cast-beat">The pinnacle of fame as imagined by someone who has never been famous. Professionally warm. Secretly jealous.</p>
-        </div>
-      </article>
-
-      <article class="cast-card">
-        <div class="cast-portrait cast-clam" aria-hidden="true"><span class="world-tag amb">Ambiguous</span>🦪</div>
-        <div class="cast-body">
-          <h3 class="cast-name">The Clam</h3>
-          <span class="cast-role">Director · D. CLAM</span>
-          <p class="cast-beat">Sits in a chair. Wears a tiny bowler hat. Never opens. Never speaks. Possibly the most powerful character in the show.</p>
         </div>
       </article>
 
