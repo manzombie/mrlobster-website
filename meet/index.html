@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meet Mr Lobster</title>
+<meta name="description" content="Have a video conversation with Mr Lobster. Always there. Never on holiday.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦞</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Fredoka+One&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:
+    radial-gradient(circle at 20% 20%,rgba(255,58,160,.18),transparent 45%),
+    radial-gradient(circle at 80% 75%,rgba(58,181,224,.14),transparent 45%),
+    linear-gradient(180deg,#0E1726 0%,#11192c 100%);
+  color:#fbf6ed;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-height:100vh;
+  position:relative;overflow:hidden;
+}
+body::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0,rgba(255,255,255,.018) 1px,transparent 1px,transparent 3px);
+  mix-blend-mode:overlay;
+}
+.center{
+  position:relative;z-index:1;
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;gap:16px;
+  padding:24px;
+}
+.logo{
+  font-family:'Fredoka One',sans-serif;
+  font-size:1.5rem;color:#FF6B5B;
+  text-decoration:none;letter-spacing:.01em;
+}
+h1{
+  font-family:'DM Serif Display',Georgia,serif;
+  font-weight:400;font-size:clamp(2rem,5vw,3.2rem);
+  line-height:1.05;letter-spacing:-.02em;
+}
+h1 .accent{color:#FF6B5B;font-style:italic}
+.tag{
+  font-family:'DM Serif Display',Georgia,serif;
+  font-style:italic;color:#ffd23a;
+  font-size:clamp(.95rem,2vw,1.2rem);
+  letter-spacing:.01em;
+}
+.hint{
+  margin-top:8px;
+  font-size:.88rem;color:rgba(251,246,237,.5);
+  max-width:340px;line-height:1.5;
+}
+.back{
+  position:absolute;top:20px;left:20px;z-index:10;
+  color:rgba(251,246,237,.5);font-size:.85rem;
+  text-decoration:none;display:flex;align-items:center;gap:6px;
+  transition:color .15s;font-family:'Inter',sans-serif;
+}
+.back:hover{color:#FF6B5B}
+
+/* Runway widget will float bottom-right via its own styles */
+</style>
+</head>
+<body>
+
+<a class="back" href="https://mrlobster.co.uk">← Back to Mr Lobster</a>
+
+<div class="center">
+  <a class="logo" href="https://mrlobster.co.uk">Mr Lobster</a>
+  <h1>Talk to <span class="accent">Mr Lobster.</span></h1>
+  <div class="tag">Always there. Never on holiday.</div>
+  <p class="hint">He&rsquo;s here. Say something — he&rsquo;ll say something back.</p>
+</div>
+
+<script src="https://cdn.dev.runwayml.com/prod/widget.js"
+        data-pub-key="pub_42beb0039f37954408ccd55ed25b9e7d9b4a2dcb65c764c1e0ebc0fd77c8cee6"></script>
+
+</body>
+</html>
