@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Mr. Lobster</title>
+<meta name="description" content="Privacy Policy for Mr. Lobster — WhatsApp automation for UK businesses.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦞</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Fredoka+One&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#fbf6ed;--cream-dark:#f3ebdb;--ink:#1a1410;--ink-soft:#3d332b;--muted:#857a6e;--lobster:#e8553a;--lobster-dark:#cc3f24;--gold:#c89b3c;--blue:#3ab5e0;--blue-dark:#2a9fc7;--line:#e8dcc6;--shadow-sm:0 1px 2px rgba(26,20,16,.04),0 2px 8px rgba(26,20,16,.04);--shadow-md:0 4px 12px rgba(26,20,16,.06),0 12px 32px rgba(26,20,16,.08);--radius:14px;--radius-lg:22px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2{font-family:'DM Serif Display',Georgia,serif;font-weight:400;letter-spacing:-.015em;color:var(--ink)}
+h3{font-size:1.05rem;font-weight:600;letter-spacing:-.01em}
+
+/* NAV — identical to index */
+nav{position:sticky;top:0;z-index:200;background:rgba(251,246,237,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:0 24px}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--lobster);font-family:'Fredoka One',sans-serif;font-weight:400;font-size:1.8rem;letter-spacing:0}
+.logo-mark{width:56px;height:56px;border-radius:0;overflow:visible;background:transparent;flex-shrink:0}
+.logo-mark img{width:100%;height:100%;object-fit:contain;display:block}
+.nav-back{font-size:.9rem;font-weight:500;color:var(--ink-soft);text-decoration:none;transition:color .2s}
+.nav-back:hover{color:var(--lobster)}
+@media(max-width:600px){.logo{font-size:1.5rem;gap:7px}.logo-mark{width:44px;height:44px}}
+
+/* HERO BANNER */
+.privacy-hero{background:var(--ink);padding:56px 24px 48px;border-bottom:1px solid rgba(255,255,255,.08)}
+.privacy-hero-inner{max-width:780px;margin:0 auto}
+.eyebrow{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--lobster);margin-bottom:16px}
+.privacy-hero h1{font-size:clamp(2rem,5vw,3.4rem);color:#fbf6ed;line-height:1.08;margin-bottom:20px}
+.privacy-hero-meta{font-size:.85rem;color:rgba(251,246,237,.4);font-family:'Inter',sans-serif;letter-spacing:.02em}
+
+/* LAYOUT */
+.layout{max-width:1100px;margin:0 auto;padding:56px 24px 80px;display:grid;grid-template-columns:200px 1fr;gap:56px;align-items:start}
+@media(max-width:768px){.layout{grid-template-columns:1fr;gap:0;padding:32px 24px 60px}.toc{display:none}}
+
+/* TOC */
+.toc{position:sticky;top:88px}
+.toc-label{font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.toc-list{list-style:none;border-left:2px solid var(--line)}
+.toc-list li a{display:block;padding:5px 0 5px 14px;font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .2s,border-color .2s;border-left:2px solid transparent;margin-left:-2px;line-height:1.4}
+.toc-list li a:hover{color:var(--lobster);border-left-color:var(--lobster)}
+
+/* CONTENT */
+.content section{margin-bottom:52px;padding-bottom:52px;border-bottom:1px solid var(--line)}
+.content section:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.section-num{font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--lobster);margin-bottom:10px}
+.content h2{font-size:1.7rem;margin-bottom:18px;line-height:1.2}
+.content h3{margin:24px 0 8px;color:var(--ink)}
+.content p{font-size:.95rem;color:var(--ink-soft);margin-bottom:14px;line-height:1.75}
+.content ul{margin:10px 0 14px;padding-left:0;list-style:none}
+.content ul li{font-size:.95rem;color:var(--ink-soft);padding:5px 0 5px 20px;position:relative;line-height:1.6}
+.content ul li::before{content:'—';position:absolute;left:0;color:var(--lobster);font-size:.85rem}
+strong{font-weight:600;color:var(--ink)}
+a{color:var(--lobster);text-decoration:none;border-bottom:1px solid rgba(232,85,58,.25);transition:border-color .2s}
+a:hover{border-bottom-color:var(--lobster)}
+
+/* CALLOUT */
+.callout{background:rgba(232,85,58,.06);border-left:3px solid var(--lobster);padding:16px 20px;border-radius:0 var(--radius) var(--radius) 0;margin-bottom:40px}
+.callout p{margin:0;font-size:.9rem;color:var(--ink-soft)}
+
+/* THIRD PARTY GRID */
+.third-party-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}
+@media(max-width:500px){.third-party-grid{grid-template-columns:1fr}}
+.tp-item{background:white;border:1px solid var(--line);border-radius:var(--radius);padding:12px 16px;box-shadow:var(--shadow-sm)}
+.tp-name{font-weight:600;font-size:.9rem;color:var(--ink);margin-bottom:2px}
+.tp-purpose{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+
+/* CONTACT CARD */
+.contact-card{background:var(--ink);border-radius:var(--radius-lg);padding:28px 32px;margin-top:20px}
+.contact-card h3{color:#fbf6ed;font-size:1.1rem;margin-top:0;margin-bottom:14px}
+.contact-card p{color:rgba(251,246,237,.65);margin-bottom:6px;font-size:.9rem}
+.contact-card a{color:var(--lobster);border-bottom-color:rgba(232,85,58,.35)}
+.contact-divider{border:none;border-top:1px solid rgba(255,255,255,.1);margin:18px 0}
+
+/* FOOTER */
+footer{background:var(--ink);color:rgba(251,246,237,.6);padding:32px 24px;font-size:.88rem;text-align:center}
+footer a{color:rgba(251,246,237,.6);border-bottom:none}
+footer a:hover{color:var(--lobster)}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <span class="logo-mark"><img src="assets/mr_lobster_logo.png" alt="Mr. Lobster"></span>
+      Mr. Lobster
+    </a>
+    <a href="/" class="nav-back">← Back to site</a>
+  </div>
+</nav>
+
+<div class="privacy-hero">
+  <div class="privacy-hero-inner">
+    <div class="eyebrow">Legal</div>
+    <h1>Privacy Policy</h1>
+    <p class="privacy-hero-meta">LAB MEDIA LTD (trading as Mr. Lobster) &nbsp;·&nbsp; Last updated: 2 May 2026</p>
+  </div>
+</div>
+
+<div class="layout">
+
+  <aside class="toc">
+    <p class="toc-label">Contents</p>
+    <ul class="toc-list">
+      <li><a href="#collect">1. What we collect</a></li>
+      <li><a href="#process">2. How we use it</a></li>
+      <li><a href="#legal">3. Legal bases</a></li>
+      <li><a href="#share">4. Who we share with</a></li>
+      <li><a href="#cookies">5. Cookies</a></li>
+      <li><a href="#ai">6. AI products</a></li>
+      <li><a href="#transfers">7. International transfers</a></li>
+      <li><a href="#retention">8. Retention</a></li>
+      <li><a href="#security">9. Security</a></li>
+      <li><a href="#minors">10. Minors</a></li>
+      <li><a href="#rights">11. Your rights</a></li>
+      <li><a href="#dnt">12. Do Not Track</a></li>
+      <li><a href="#updates">13. Updates</a></li>
+      <li><a href="#contact">14. Contact</a></li>
+      <li><a href="#request">15. Data requests</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+
+    <div class="callout">
+      <p>This Privacy Notice describes how <strong>LAB MEDIA LTD</strong> (doing business as Mr. Lobster) collects, uses, and shares your personal information when you use our services at <a href="http://mrlobster.co.uk">mrlobster.co.uk</a>. Questions? Email <a href="mailto:setup@mrlobster.co.uk">setup@mrlobster.co.uk</a></p>
+    </div>
+
+    <section id="collect">
+      <div class="section-num">01</div>
+      <h2>What information do we collect?</h2>
+      <h3>Information you give us directly</h3>
+      <p>We collect personal information you voluntarily provide when you express interest in our services, contact us, or participate in activities on our site.</p>
+      <ul>
+        <li>Names</li>
+        <li>Phone numbers</li>
+        <li>Email addresses</li>
+        <li>Contact preferences</li>
+      </ul>
+      <p>We do not process sensitive personal information.</p>
+      <h3>Information collected automatically</h3>
+      <p>When you visit our site, we automatically collect certain technical information. This does not reveal your specific identity but includes:</p>
+      <ul>
+        <li><strong>Log and usage data</strong> — IP address, browser type, pages viewed, timestamps</li>
+        <li><strong>Device data</strong> — device type, operating system, hardware model</li>
+        <li><strong>Location data</strong> — approximate location based on IP address</li>
+      </ul>
+      <h3>Google API</h3>
+      <p>Our use of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+      <h3>Information from other sources</h3>
+      <p>We may collect limited data from public databases and other outside sources to enhance our ability to provide relevant services.</p>
+    </section>
+
+    <section id="process">
+      <div class="section-num">02</div>
+      <h2>How do we process your information?</h2>
+      <p>We process your information to provide, improve, and administer our services, communicate with you, and to comply with law.</p>
+      <ul>
+        <li><strong>To deliver our services</strong> — providing the WhatsApp automation setup you've requested</li>
+        <li><strong>To respond to enquiries</strong> — answering your questions and resolving issues</li>
+        <li><strong>To send administrative information</strong> — service updates and policy changes</li>
+        <li><strong>To fulfil orders</strong> — managing your setup, payments, and service delivery</li>
+        <li><strong>To protect vital interests</strong> — preventing harm when necessary</li>
+      </ul>
+    </section>
+
+    <section id="legal">
+      <div class="section-num">03</div>
+      <h2>Legal bases for processing</h2>
+      <p>Under GDPR and UK GDPR, we rely on the following legal bases:</p>
+      <ul>
+        <li><strong>Consent</strong> — where you've given permission for a specific purpose. You can withdraw consent at any time by contacting us.</li>
+        <li><strong>Performance of a contract</strong> — to fulfil our contractual obligations to you</li>
+        <li><strong>Legal obligations</strong> — where required by law</li>
+        <li><strong>Vital interests</strong> — where necessary to protect safety</li>
+      </ul>
+      <p>We are generally the 'data controller' for personal information described in this notice. When we process data on behalf of our business customers, we act as a 'data processor' and the business is the data controller.</p>
+    </section>
+
+    <section id="share">
+      <div class="section-num">04</div>
+      <h2>When and with whom do we share your information?</h2>
+      <p>We share information with third-party service providers who help us deliver our services. All third parties are contractually obligated to protect your data and may only use it as we instruct.</p>
+      <div class="third-party-grid">
+        <div class="tp-item"><div class="tp-name">Anthropic</div><div class="tp-purpose">AI platform</div></div>
+        <div class="tp-item"><div class="tp-name">OpenAI</div><div class="tp-purpose">AI platform</div></div>
+        <div class="tp-item"><div class="tp-name">ElevenLabs</div><div class="tp-purpose">AI voice synthesis</div></div>
+        <div class="tp-item"><div class="tp-name">Twilio</div><div class="tp-purpose">Communications</div></div>
+        <div class="tp-item"><div class="tp-name">Stripe</div><div class="tp-purpose">Billing</div></div>
+        <div class="tp-item"><div class="tp-name">Sentry</div><div class="tp-purpose">Performance monitoring</div></div>
+        <div class="tp-item"><div class="tp-name">Render</div><div class="tp-purpose">Cloud hosting</div></div>
+        <div class="tp-item"><div class="tp-name">Google Maps</div><div class="tp-purpose">Mapping services</div></div>
+      </div>
+      <p>We may also share your information in connection with a business transfer, merger, or acquisition.</p>
+    </section>
+
+    <section id="cookies">
+      <div class="section-num">05</div>
+      <h2>Cookies and tracking technologies</h2>
+      <p>We use cookies and similar tracking technologies to gather information when you interact with our site. These help maintain security, fix bugs, save preferences, and assist with basic site functions.</p>
+      <p>You can control cookies through your browser settings. Disabling cookies may affect certain features of our site. For full details see our Cookie Policy.</p>
+    </section>
+
+    <section id="ai">
+      <div class="section-num">06</div>
+      <h2>Artificial intelligence products</h2>
+      <p>Mr. Lobster offers products powered by artificial intelligence. Our AI products are designed for:</p>
+      <ul>
+        <li>AI automation</li>
+        <li>AI bots and conversational agents</li>
+        <li>Natural language processing</li>
+      </ul>
+      <p>We provide AI products through third-party providers including Anthropic and OpenAI. Your input, output, and personal information may be shared with these providers to enable the AI features. You must not use our AI products in any way that violates the terms or policies of any AI service provider.</p>
+      <p><strong>To opt out</strong> of AI processing, contact us at <a href="mailto:setup@mrlobster.co.uk">setup@mrlobster.co.uk</a>.</p>
+    </section>
+
+    <section id="transfers">
+      <div class="section-num">07</div>
+      <h2>International transfers</h2>
+      <p>Our servers are located in the United States. Your information may be transferred to and processed in the US and other countries. We protect such transfers using the European Commission's Standard Contractual Clauses, copies of which are available upon request.</p>
+    </section>
+
+    <section id="retention">
+      <div class="section-num">08</div>
+      <h2>How long we keep your information</h2>
+      <p>We retain your personal information for no longer than <strong>1 year</strong> unless a longer retention period is required by law (e.g. tax or accounting obligations). When retention is no longer necessary, we delete or anonymise the data.</p>
+    </section>
+
+    <section id="security">
+      <div class="section-num">09</div>
+      <h2>Security</h2>
+      <p>We implement appropriate technical and organisational security measures to protect your personal information. However, no electronic transmission over the internet can be guaranteed 100% secure. You should only access our services within a secure environment.</p>
+    </section>
+
+    <section id="minors">
+      <div class="section-num">10</div>
+      <h2>Minors</h2>
+      <p>We do not knowingly collect data from or market to children under 18. If you become aware that we have collected data from a minor, contact us at <a href="mailto:setup@mrlobster.co.uk">setup@mrlobster.co.uk</a> and we will delete it promptly.</p>
+    </section>
+
+    <section id="rights">
+      <div class="section-num">11</div>
+      <h2>Your privacy rights</h2>
+      <p>Under EEA, UK, and Swiss data protection law, you have the right to:</p>
+      <ul>
+        <li>Request access to and a copy of your personal information</li>
+        <li>Request rectification or erasure</li>
+        <li>Restrict or object to processing</li>
+        <li>Data portability</li>
+        <li>Not be subject to automated decision-making</li>
+        <li>Withdraw consent at any time</li>
+      </ul>
+      <p>To exercise these rights, submit a <a href="https://app.termly.io/dsar/4733256f-2369-402b-9acf-326188b42aa3" target="_blank">data subject access request</a> or contact us directly.</p>
+      <p>If you believe we are unlawfully processing your data, you have the right to complain to the <a href="https://ico.org.uk/make-a-complaint/data-protection-complaints/" target="_blank">UK Information Commissioner's Office (ICO)</a>.</p>
+    </section>
+
+    <section id="dnt">
+      <div class="section-num">12</div>
+      <h2>Do Not Track</h2>
+      <p>We do not currently respond to Do Not Track (DNT) browser signals as no uniform standard has been finalised. If a tracking standard is adopted that we must follow, we will update this notice accordingly.</p>
+    </section>
+
+    <section id="updates">
+      <div class="section-num">13</div>
+      <h2>Policy updates</h2>
+      <p>We may update this Privacy Notice from time to time. The updated version will show a revised date at the top. For material changes, we will notify you directly or post a prominent notice on our site.</p>
+    </section>
+
+    <section id="contact">
+      <div class="section-num">14</div>
+      <h2>Contact us</h2>
+      <div class="contact-card">
+        <h3>Get in touch about privacy</h3>
+        <p>Email: <a href="mailto:setup@mrlobster.co.uk">setup@mrlobster.co.uk</a></p>
+        <p>Post: LAB MEDIA LTD, 11 Park Gardens, Hockley, Essex, SS5 4HE, United Kingdom</p>
+        <hr class="contact-divider">
+        <h3>UK Representative</h3>
+        <p>Lukasz Bukowiecki</p>
+        <p>Email: <a href="mailto:lukasz.bukowiecki@gmail.com">lukasz.bukowiecki@gmail.com</a></p>
+        <p>Website: <a href="https://bukowiecki.co" target="_blank">bukowiecki.co</a></p>
+        <p>Phone: 07782 133712</p>
+      </div>
+    </section>
+
+    <section id="request">
+      <div class="section-num">15</div>
+      <h2>Review, update, or delete your data</h2>
+      <p>You may have the right to request access to, correction of, or deletion of your personal information. To do so, <a href="https://app.termly.io/dsar/4733256f-2369-402b-9acf-326188b42aa3" target="_blank">submit a data subject access request</a> or contact us at <a href="mailto:setup@mrlobster.co.uk">setup@mrlobster.co.uk</a>.</p>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <div>© 2026 Mr. Lobster · LAB MEDIA LTD · <a href="/">mrlobster.co.uk</a></div>
+</footer>
+
+</body>
+</html>

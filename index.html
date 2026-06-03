@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mr. Lobster — Never miss another customer.</title>
+<meta name="description" content="Mr. Lobster answers calls and WhatsApps for busy local service businesses, captures the lead, and alerts you instantly. Never miss another customer.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦞</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Fredoka+One&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#fbf6ed;--cream-dark:#f3ebdb;--ink:#1a1410;--ink-soft:#3d332b;--muted:#857a6e;--lobster:#e8553a;--lobster-dark:#cc3f24;--gold:#c89b3c;--blue:#3ab5e0;--blue-dark:#2a9fc7;--line:#e8dcc6;--shadow-sm:0 1px 2px rgba(26,20,16,.04),0 2px 8px rgba(26,20,16,.04);--shadow-md:0 4px 12px rgba(26,20,16,.06),0 12px 32px rgba(26,20,16,.08);--radius:14px;--radius-lg:22px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle at 20% 10%,rgba(232,85,58,.04),transparent 40%),radial-gradient(circle at 80% 70%,rgba(58,181,224,.04),transparent 40%);pointer-events:none;z-index:0}
+.container{max-width:1100px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+h1,h2{font-family:'DM Serif Display',Georgia,serif;font-weight:400;letter-spacing:-.015em;color:var(--ink)}
+h1{font-size:clamp(2.6rem,6vw,4.6rem);line-height:1.02}
+h2{font-size:clamp(1.9rem,4vw,2.9rem);line-height:1.08}
+h3{font-size:1.15rem;font-weight:600;letter-spacing:-.01em}
+.eyebrow{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--lobster);margin-bottom:16px}
+p.lead{font-size:1.15rem;color:var(--ink-soft);line-height:1.65}
+nav{position:sticky;top:0;z-index:100;background:rgba(251,246,237,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
+nav.scrolled{border-bottom-color:var(--line);background:rgba(251,246,237,.96)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1100px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--lobster);font-family:'Fredoka One',sans-serif;font-weight:400;font-size:1.8rem;letter-spacing:0}
+.logo-mark{width:56px;height:56px;border-radius:0;overflow:visible;background:transparent;flex-shrink:0}
+.logo-mark img{width:100%;height:100%;object-fit:contain;display:block}
+.nav-links{display:flex;align-items:center;gap:20px}
+.nav-links a:not(.btn){color:var(--ink-soft);text-decoration:none;font-size:.93rem;font-weight:500;transition:color .2s}
+.nav-links a:not(.btn):hover{color:var(--lobster)}
+@media(max-width:720px){
+  .nav-links a:not(.btn){display:none}
+  .nav-inner{padding:10px 16px}
+  .logo{font-size:1.5rem;gap:7px}
+  .logo-mark{width:48px;height:48px}
+  .nav-links .btn-whatsapp .wa-label,.nav-links .btn-call .call-label{display:none}
+  .nav-links .btn-whatsapp,.nav-links .btn-call{width:42px;height:42px;padding:0;border-radius:50%;justify-content:center;flex-shrink:0}
+  .nav-links .btn-whatsapp svg,.nav-links .btn-call svg{width:20px;height:20px}
+}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:100px;font-weight:600;font-size:.95rem;text-decoration:none;transition:all .2s ease;border:none;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap}
+.btn-lg{padding:16px 28px;font-size:1rem}
+.btn-whatsapp{background:#25d366;color:white;box-shadow:0 4px 14px rgba(37,211,102,.35)}
+.btn-whatsapp:hover{background:#20bd5a;transform:translateY(-1px);box-shadow:0 8px 22px rgba(37,211,102,.5)}
+.btn-whatsapp svg{width:18px;height:18px;fill:currentColor}
+.btn-call{background:var(--blue);color:white;box-shadow:0 4px 14px rgba(58,181,224,.3)}
+.btn-call:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 8px 22px rgba(58,181,224,.45)}
+.btn-call svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.hero{padding:60px 0 0;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:start}
+@media(max-width:860px){.hero-grid{grid-template-columns:1fr}.hero{padding:40px 0 60px}}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:white;border:1px solid var(--line);padding:7px 14px;border-radius:100px;font-size:.82rem;font-weight:500;color:var(--ink-soft);margin-bottom:24px;box-shadow:var(--shadow-sm)}
+.hero-tag .dot{width:8px;height:8px;background:#22c55e;border-radius:50%;box-shadow:0 0 0 3px rgba(34,197,94,.2);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(34,197,94,.2)}50%{box-shadow:0 0 0 6px rgba(34,197,94,.05)}}
+@keyframes float{0%,100%{transform:translateY(0px)}50%{transform:translateY(-14px)}}
+.hero h1 .accent{color:var(--lobster);font-style:italic}
+.hero-copy p.lead{margin:22px 0 30px;max-width:560px}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px}
+@media(max-width:720px){.hero-ctas{flex-direction:column;align-items:stretch}.hero-ctas .btn{width:100%;justify-content:center}}
+.hero-bullets{list-style:none}
+.hero-bullets li{display:flex;align-items:center;gap:10px;font-size:.94rem;color:var(--ink-soft);padding:6px 0}
+.hero-bullets li::before{content:'';width:18px;height:18px;flex-shrink:0;background:var(--lobster);border-radius:50%;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M13.5 4L6 11.5L2.5 8' stroke='white' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/contain no-repeat;-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M13.5 4L6 11.5L2.5 8' stroke='white' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/contain no-repeat}
+.hero-lobster{display:flex;align-items:flex-start;justify-content:center}
+.hero-lobster canvas{width:100%;max-width:560px;height:auto;display:block;animation:float 5s ease-in-out infinite}
+.hero-lobster-mobile{display:none}
+.hero-lobster-desktop{display:flex;position:sticky;top:60px;align-self:flex-start;padding-top:56px}
+@media(max-width:860px){
+  .hero-lobster-desktop{display:none;position:static;padding-top:0}
+  .hero-lobster-mobile{display:flex;margin:0 auto -20px;max-width:280px;width:100%}
+}
+.what-it-does{background:white;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:90px 0}
+.what-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+@media(max-width:860px){.what-grid{grid-template-columns:1fr;gap:40px}.what-it-does{padding:60px 0}}
+.what-list{list-style:none;margin-top:28px}
+.what-list li{display:flex;align-items:flex-start;gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
+.what-list li:last-child{border-bottom:none}
+.what-icon{width:44px;height:44px;flex-shrink:0;border-radius:12px;background:var(--cream-dark);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:background .3s,border-color .3s}
+.what-icon svg{width:20px;height:20px;stroke:var(--lobster);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.what-list li:hover .what-icon{background:var(--lobster);border-color:var(--lobster)}
+.what-list li:hover .what-icon svg{stroke:white}
+.what-list-text strong{display:block;font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:3px}
+.what-list-text span{font-size:.92rem;color:var(--muted)}
+.what-aside{background:var(--ink);border-radius:var(--radius-lg);padding:40px;position:relative;overflow:hidden}
+.what-aside::before{content:'';position:absolute;top:-40%;right:-20%;width:400px;height:400px;background:radial-gradient(circle,rgba(232,85,58,.2),transparent 60%);border-radius:50%}
+.what-aside-inner{position:relative;z-index:1}
+.what-aside .eyebrow{color:var(--gold)}
+.what-aside h3{font-family:'DM Serif Display',Georgia,serif;font-size:1.8rem;font-weight:400;color:var(--cream);margin-bottom:14px;letter-spacing:-.015em;line-height:1.15}
+.what-aside p{color:rgba(251,246,237,.75);font-size:.97rem;line-height:1.65;margin-bottom:28px}
+.qualifier{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:18px 20px;font-size:.9rem;color:rgba(251,246,237,.8);line-height:1.55}
+.qualifier strong{color:var(--gold)}
+.demo-section{padding:100px 0}
+@media(max-width:720px){.demo-section{padding:70px 0}}
+.demo-header{text-align:center;max-width:640px;margin:0 auto 56px}
+.demo-header p{color:var(--ink-soft);font-size:1.08rem;margin-top:16px}
+.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:860px;margin:0 auto}
+@media(max-width:720px){.demo-grid{grid-template-columns:1fr}}
+.demo-card{background:white;border:1px solid var(--line);border-radius:var(--radius-lg);padding:36px 32px;text-align:center;transition:all .3s ease;position:relative;overflow:hidden}
+.demo-card::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .3s}
+.demo-card.demo-call::before{background:radial-gradient(circle at 50% 0%,rgba(58,181,224,.06),transparent 60%)}
+.demo-card.demo-wa::before{background:radial-gradient(circle at 50% 0%,rgba(37,211,102,.06),transparent 60%)}
+.demo-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md)}
+.demo-card:hover::before{opacity:1}
+.demo-card.demo-call:hover{border-color:var(--blue)}
+.demo-card.demo-wa:hover{border-color:#25d366}
+.demo-card-inner{position:relative;z-index:1}
+.demo-icon{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.demo-call .demo-icon{background:rgba(58,181,224,.12)}
+.demo-wa .demo-icon{background:rgba(37,211,102,.12)}
+.demo-card h3{font-family:'DM Serif Display',Georgia,serif;font-size:1.6rem;font-weight:400;margin-bottom:10px;letter-spacing:-.01em}
+.demo-card p{color:var(--ink-soft);font-size:.95rem;line-height:1.6;margin-bottom:24px}
+.demo-card .demo-note{font-size:.78rem;color:var(--muted);margin-top:14px;font-style:italic}
+.demo-card .btn{width:100%;justify-content:center}
+.demo-disclaimer{text-align:center;margin:32px auto 0;font-size:.85rem;color:var(--muted);max-width:500px}
+.demo-disclaimer strong{color:var(--ink-soft)}
+.audience{background:var(--cream-dark);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:90px 0}
+@media(max-width:720px){.audience{padding:60px 0}}
+.audience-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:center}
+@media(max-width:860px){.audience-grid{grid-template-columns:1fr;gap:40px}}
+.audience-tags{display:flex;flex-wrap:wrap;gap:10px}
+.audience-tags span{padding:10px 18px;background:white;border:1px solid var(--line);border-radius:100px;font-size:.91rem;color:var(--ink-soft);font-weight:500;transition:all .2s}
+.audience-tags span:hover{background:var(--lobster);color:white;border-color:var(--lobster);transform:translateY(-2px)}
+.audience-note{background:white;padding:22px;border-radius:var(--radius);border-left:3px solid var(--lobster);margin-top:28px;font-size:.95rem;color:var(--ink-soft)}
+.audience-note strong{color:var(--ink)}
+.interest-section{padding:110px 0;text-align:center}
+.interest-section h2{max-width:600px;margin:0 auto 18px}
+.interest-section p.lead{max-width:520px;margin:0 auto 40px}
+.interest-channels{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:12px}
+@media(max-width:720px){.interest-channels{flex-direction:column;align-items:center}.interest-channels .btn{width:100%;max-width:320px}}
+.interest-note{font-size:.85rem;color:var(--muted)}
+footer{background:var(--ink);color:rgba(251,246,237,.6);padding:44px 24px 32px;font-size:.88rem}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;align-items:center}
+.footer-logo{display:flex;align-items:center;gap:10px;color:var(--cream);font-family:'Fredoka One',sans-serif;font-size:1.2rem;text-decoration:none}
+.footer-logo .logo-mark{width:44px;height:44px;background:transparent;border-radius:0;overflow:visible}
+.footer-links{display:flex;gap:24px}
+.footer-links a{color:rgba(251,246,237,.6);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--lobster)}
+.float-buttons{position:fixed;bottom:24px;right:24px;display:flex;flex-direction:column;gap:12px;z-index:100}
+.float-btn{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:transform .2s;box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.float-btn:hover{transform:scale(1.08)}
+.float-btn svg{width:26px;height:26px}
+.float-wa-btn{background:#25d366;color:white}
+.float-call-btn{background:var(--blue);color:white;box-shadow:0 8px 24px rgba(58,181,224,.4)}
+.float-call-btn svg{stroke:white;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+
+/* Apple-level desktop hero balance */
+@media(min-width:861px){
+  .hero{
+    padding:44px 0 86px;
+  }
+
+  .hero-grid{
+    grid-template-columns:minmax(600px,680px) minmax(360px,1fr);
+    gap:28px;
+    align-items:center;
+  }
+
+  .hero-copy{
+    max-width:680px;
+  }
+
+  .hero-tag{
+    margin-bottom:28px;
+  }
+
+  .hero h1{
+    font-size:clamp(2.6rem,3.85vw,4.15rem);
+    line-height:1.06;
+    max-width:760px;
+    letter-spacing:-.025em;
+  }
+
+  .hero h1 .headline-main,
+  .hero h1 .accent{
+    display:block;
+    white-space:nowrap;
+  }
+
+  .hero h1 .accent{
+    color:var(--lobster);
+    font-style:italic;
+    font-size:1.02em;
+    line-height:1.02;
+    margin-top:10px;
+  }
+
+  .hero-copy p.lead{
+    max-width:590px;
+    margin:28px 0 26px;
+    font-size:1.06rem;
+    line-height:1.7;
+  }
+
+  .hero-ctas{
+    margin-bottom:22px;
+  }
+
+  .hero-bullets{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 20px;
+    max-width:700px;
+  }
+
+  .hero-bullets li{
+    padding:0;
+    font-size:.9rem;
+    line-height:1.35;
+  }
+
+  .hero-bullets li::before{
+    width:16px;
+    height:16px;
+  }
+
+  .hero-lobster-desktop{
+    position:relative;
+    top:auto;
+    align-self:center;
+    padding-top:30px;
+    justify-content:center;
+    transform:translateX(20px) translateY(10px);
+  }
+
+  .hero-lobster canvas{
+    width:clamp(420px,34vw,620px);
+    max-width:none;
+    height:auto;
+  }
+}
+
+@media(min-width:861px) and (max-width:1180px){
+  .hero-grid{
+    grid-template-columns:minmax(560px,620px) minmax(300px,1fr);
+    gap:14px;
+  }
+
+  .hero h1{
+    font-size:clamp(2.35rem,3.65vw,3.35rem);
+    max-width:660px;
+  }
+
+  .hero-lobster-desktop{
+    transform:translateX(10px);
+    padding-top:44px;
+  }
+
+  .hero-lobster canvas{
+    width:clamp(360px,32vw,480px);
+    max-width:none;
+  }
+}
+
+@media(min-width:861px) and (max-width:980px){
+  .hero-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero-lobster-desktop{
+    display:none;
+  }
+
+  .hero-lobster-mobile{
+    display:flex;
+    max-width:300px;
+    margin:14px auto 0;
+  }
+
+  .hero h1 .headline-main,
+  .hero h1 .accent{
+    white-space:normal;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="logo">
+      <span class="logo-mark"><img src="assets/mr_lobster_logo.png" alt="Mr. Lobster"></span>
+      Mr. Lobster
+    </a>
+    <div class="nav-links">
+      <a href="#what">What it does</a>
+      <a href="#demo">Try it</a>
+      <a href="#who">Who it's for</a>
+      <a href="tel:+442045727888" class="btn btn-call">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <span class="call-label">Call Us</span>
+      </a>
+      <a href="https://wa.me/447961963992" class="btn btn-whatsapp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        <span class="wa-label">WhatsApp</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" id="top">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="hero-tag"><span class="dot"></span>Essex &amp; UK-wide · Early installs now open</div>
+        <h1><span class="headline-main">Never miss another customer.</span><span class="accent">Always there. Never on holiday.</span></h1>
+        <div class="hero-lobster hero-lobster-mobile">
+          <canvas id="lobster-turntable-mobile" width="620" height="348" aria-label="Mr. Lobster — always working"></canvas>
+        </div>
+        <p class="lead">Mr. Lobster answers your calls and WhatsApps when you can’t. Every enquiry is captured, qualified, and sent to you within seconds.</p>
+        <div class="hero-ctas">
+          <a href="https://wa.me/447961963992" class="btn btn-whatsapp btn-lg">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            Chat on WhatsApp
+          </a>
+          <a href="tel:+442045727888" class="btn btn-call btn-lg">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Call Us
+          </a>
+        </div>
+        <ul class="hero-bullets">
+          <li>No app to install. No customer-side software.</li>
+          <li>We set it up for you — remotely, usually in under a week.</li>
+          <li>You stay in control. Switch it off anytime.</li>
+        </ul>
+      </div>
+      <div class="hero-lobster hero-lobster-desktop">
+        <canvas id="lobster-turntable" width="620" height="348" aria-label="Mr. Lobster — always working, never on holiday" style="width:100%;max-width:560px;height:auto"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="what-it-does" id="what">
+  <div class="container">
+    <div class="what-grid">
+      <div class="reveal">
+        <div class="eyebrow">What it does</div>
+        <h2>Your calls, WhatsApps and leads handled automatically.</h2>
+        <ul class="what-list">
+          <li>
+            <div class="what-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+            <div class="what-list-text"><strong>Answers calls when you are busy</strong><span>Sounds professional, qualifies the job, and takes the details. No voicemail. No missed opportunity.</span></div>
+          </li>
+          <li>
+            <div class="what-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+            <div class="what-list-text"><strong>Replies to WhatsApp enquiries</strong><span>Handles common questions, keeps the conversation moving, and stops leads going cold.</span></div>
+          </li>
+          <li>
+            <div class="what-icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+            <div class="what-list-text"><strong>Captures the lead properly</strong><span>Name, number, job type, urgency, and notes. Clean details, ready for you to act on.</span></div>
+          </li>
+          <li>
+            <div class="what-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/><path d="M3.27 3.27a19.79 19.79 0 00-2.27 8.8"/><polyline points="7 10 12 15 17 10"/></svg></div>
+            <div class="what-list-text"><strong>Alerts you instantly</strong><span>Within seconds of a call ending. You get the customer details straight to WhatsApp.</span></div>
+          </li>
+        </ul>
+      </div>
+      <div class="what-aside reveal">
+        <div class="what-aside-inner">
+          <div class="eyebrow">The promise</div>
+          <h3>If a customer reaches out, you know about it.</h3>
+          <p>We set it up remotely — your dedicated number, AI receptionist, WhatsApp alerts, and basic enquiry flow. No engineer visit. No app. No tech headache.</p>
+          <div class="qualifier"><strong>Best fit:</strong> busy service businesses where one missed enquiry can cost £200 or more. If that sounds like you, let’s talk.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="demo-section" id="demo">
+  <div class="container">
+    <div class="demo-header reveal">
+      <div class="eyebrow">Try it now</div>
+      <h2>Call it. WhatsApp it. See how it works.</h2>
+      <p>Test the live demo before you commit. Ask a real question and see how the system handles an enquiry.</p>
+    </div>
+    <div class="demo-grid">
+      <div class="demo-card demo-call reveal">
+        <div class="demo-card-inner">
+          <div class="demo-icon">
+            <svg viewBox="0 0 24 24" width="32" height="32" stroke="#3ab5e0" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <h3>Call the AI</h3>
+          <p>Ring the number. Hear what your customers would hear. Ask about a service, price, or booking.</p>
+          <a href="tel:+442045727888" class="btn btn-call btn-lg">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Call now
+          </a>
+          <p class="demo-note">Works best on mobile — dials automatically.</p>
+        </div>
+      </div>
+      <div class="demo-card demo-wa reveal">
+        <div class="demo-card-inner">
+          <div class="demo-icon">
+            <svg viewBox="0 0 24 24" width="32" height="32" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          </div>
+          <h3>WhatsApp the AI</h3>
+          <p>Send a message as a customer. See how it responds, qualifies the enquiry, and keeps the lead moving.</p>
+          <a href="https://wa.me/447961963992" class="btn btn-whatsapp btn-lg">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            WhatsApp now
+          </a>
+          <p class="demo-note">Opens WhatsApp on any device.</p>
+        </div>
+      </div>
+    </div>
+    <p class="demo-disclaimer"><strong>This is a live demo.</strong> Your version would be configured around your services, prices, opening hours, and tone.</p>
+  </div>
+</section>
+
+<section class="audience" id="who">
+  <div class="container">
+    <div class="audience-grid">
+      <div class="reveal">
+        <div class="eyebrow">Who it's for</div>
+        <h2>Built for plumbers, heating engineers and local service businesses.</h2>
+        <p style="color:var(--ink-soft);margin-top:16px;font-size:1.05rem;">For businesses where the owner is often on-site, on the road, with a customer, or out of hours — and every missed call can become a lost job.</p>
+        <div class="audience-note"><strong>The honest test:</strong> if one missed enquiry could cost you £200 or more, Mr. Lobster can pay for itself quickly.</div>
+      </div>
+      <div class="audience-tags reveal">
+        <span>Plumbers &amp; heating engineers</span>
+        <span>Electricians</span>
+        <span>Roofers</span>
+        <span>Emergency trades</span>
+        <span>Boiler servicing</span>
+        <span>Home repair businesses</span>
+        <span>Mobile service teams</span>
+        <span>Owner-led local businesses</span>
+        <span>Aesthetics clinics by request</span>
+        <span>Private dentists by request</span>
+        <span>Estate agents by request</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="interest-section" id="contact">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">Interested?</div>
+      <h2>We’re setting up a small number of businesses now.</h2>
+      <p class="lead">No pricing page. No sign-up form. Send a WhatsApp or call the demo number — Lukasz will reply personally and check if it’s a good fit.</p>
+      <div class="interest-channels">
+        <a href="https://wa.me/447961963992" class="btn btn-whatsapp btn-lg">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Send a WhatsApp
+        </a>
+        <a href="tel:+442045727888" class="btn btn-call btn-lg">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Give us a call
+        </a>
+      </div>
+      <p class="interest-note">Lukasz replies personally.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <a href="#top" class="footer-logo">
+      <span class="logo-mark"><img src="assets/mr_lobster_logo.png" alt="Mr. Lobster"></span>
+      Mr. Lobster
+    </a>
+    <div class="footer-links">
+      <a href="#what">What it does</a>
+      <a href="#demo">Try it</a>
+      <a href="#who">Who it's for</a>
+      <a href="https://wa.me/447961963992">WhatsApp</a>
+      <a href="https://www.instagram.com/mr_lobster_bot?igsh=MXNoOWdrZW8yZTVocw%3D%3D&utm_source=qr" target="_blank" rel="noopener">Instagram</a>
+      <a href="/privacy.html">Privacy Policy</a>
+    </div>
+    <div>© 2026 Mr. Lobster · mrlobster.co.uk</div>
+  </div>
+</footer>
+
+<div class="float-buttons">
+  <a href="tel:+442045727888" class="float-btn float-call-btn" aria-label="Call Us">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  </a>
+  <a href="https://wa.me/447961963992" class="float-btn float-wa-btn" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+</div>
+
+<script>
+// ── Nav scroll state ──────────────────────────────────────────────────────
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>20),{passive:true});
+
+// ── Reveal on scroll ──────────────────────────────────────────────────────
+const obs=new IntersectionObserver((entries)=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// ── Turntable ─────────────────────────────────────────────────────────────
+(function(){
+  const TOTAL = 58;
+  const SCROLL_PER_ROTATION = 900; // px of scroll = one full 360°
+
+  const canvasD = document.getElementById('lobster-turntable');
+  const canvasM = document.getElementById('lobster-turntable-mobile');
+  if (!canvasD && !canvasM) return;
+
+  // Load all frames
+  const frames = [];
+  let loaded = 0;
+  for (let i = 0; i < TOTAL; i++) {
+    const img = new Image();
+    img.src = 'assets/turntable/lobster_' + String(i).padStart(4,'0') + '.webp';
+    img.onload = () => { loaded++; if (loaded === 1) drawFrame(0); }; // paint first frame immediately
+    frames.push(img);
+  }
+
+  function drawFrame(idx) {
+    const f = frames[idx];
+    if (!f || !f.complete) return;
+    [canvasD, canvasM].forEach(c => {
+      if (!c) return;
+      const ctx = c.getContext('2d');
+      ctx.clearRect(0, 0, c.width, c.height);
+      ctx.drawImage(f, 0, 0, c.width, c.height);
+    });
+  }
+
+  let lastFrame = -1;
+  let ticking = false;
+
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const scrollY = window.scrollY;
+      const idx = Math.floor((scrollY / SCROLL_PER_ROTATION) * TOTAL) % TOTAL;
+      const frame = ((idx % TOTAL) + TOTAL) % TOTAL;
+      if (frame !== lastFrame) {
+        lastFrame = frame;
+        drawFrame(frame);
+      }
+      ticking = false;
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, {passive:true});
+
+  // Draw frame 0 once images are ready (fallback)
+  window.addEventListener('load', () => drawFrame(0));
+})();
+</script>
+</body>
+</html>
