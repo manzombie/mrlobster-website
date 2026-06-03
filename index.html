@@ -263,6 +263,66 @@ nav{position:sticky;top:0;z-index:100;background:rgba(14,23,38,.78);backdrop-fil
   padding:0;text-align:left;line-height:1.1;
 }
 
+/* ---------- the cast ---------- */
+.cast{
+  position:relative;background:var(--cream);
+  padding:96px 0 100px;border-bottom:1px solid var(--line);
+  background-image:
+    radial-gradient(circle at 90% 12%,rgba(255,210,58,.06),transparent 40%),
+    radial-gradient(circle at 8% 88%,rgba(255,107,91,.06),transparent 40%);
+}
+.cast-header{max-width:720px;margin:0 auto 56px;text-align:center}
+.cast-header h2{color:var(--ink)}
+.cast-header h2 .accent{color:var(--coral);font-style:italic}
+.cast-header p{margin-top:14px;color:var(--ink-soft);font-size:1.06rem;max-width:560px;margin-left:auto;margin-right:auto}
+
+.cast-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1080px;margin:0 auto}
+@media(max-width:860px){.cast-grid{grid-template-columns:repeat(2,1fr);gap:18px;max-width:680px}}
+@media(max-width:520px){.cast-grid{grid-template-columns:1fr;max-width:380px}}
+
+.cast-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+.cast-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:rgba(255,107,91,.4)}
+.cast-portrait{
+  position:relative;aspect-ratio:4/3;overflow:hidden;background:#0E1726;
+  border-bottom:1px solid var(--line);
+}
+.cast-portrait img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.cast-portrait img.portrait-tight{object-position:center 18%}
+.cast-card:hover .cast-portrait img{transform:scale(1.03)}
+.cast-portrait .world-tag{
+  position:absolute;top:12px;right:12px;
+  font-family:'Inter',sans-serif;font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--cream);background:rgba(14,23,38,.78);backdrop-filter:blur(6px);
+  padding:5px 10px;border-radius:100px;border:1px solid rgba(255,255,255,.1);
+}
+.cast-portrait .world-tag.real{background:rgba(58,181,224,.85);border-color:transparent}
+.cast-portrait .world-tag.fantasy{background:rgba(255,58,160,.85);border-color:transparent}
+.cast-portrait .world-tag.both{background:linear-gradient(90deg,rgba(58,181,224,.9),rgba(255,58,160,.9));border-color:transparent}
+.cast-portrait .world-tag.amb{background:rgba(200,155,60,.88);border-color:transparent}
+
+.cast-clam{
+  display:flex;align-items:center;justify-content:center;
+  background:
+    radial-gradient(circle at 50% 40%,rgba(200,155,60,.22),transparent 70%),
+    linear-gradient(180deg,#1a1410 0%,#0E1726 100%);
+  font-size:5.5rem;line-height:1;
+  filter:saturate(.9);
+}
+.cast-clam::after{
+  content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.04) 0,rgba(255,255,255,.04) 1px,transparent 1px,transparent 3px);
+  pointer-events:none;
+}
+
+.cast-body{padding:22px 22px 24px}
+.cast-name{font-family:'DM Serif Display',Georgia,serif;font-size:1.35rem;font-weight:400;letter-spacing:-.01em;color:var(--ink);line-height:1.1}
+.cast-role{display:block;margin-top:4px;font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--coral)}
+.cast-beat{margin-top:14px;color:var(--ink-soft);font-size:.95rem;line-height:1.55}
+
 /* ---------- footer (minimal for Step A) ---------- */
 footer{background:var(--navy);color:rgba(251,246,237,.72);padding:48px 0 36px;border-top:1px solid rgba(255,255,255,.06)}
 .footer-grid{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap}
@@ -405,16 +465,82 @@ footer{background:var(--navy);color:rgba(251,246,237,.72);padding:48px 0 36px;bo
     </div>
 
     <div class="universe-strip" aria-label="Recurring fantasy formats">
-      <a class="format" href="#" aria-label="Holiday Mode"><img src="assets/show/titles/title_card_002_HolidayMode_HD.png" alt="" loading="lazy"><span class="format-label">Holiday Mode</span></a>
-      <a class="format" href="#" aria-label="Lobster Late Night"><img src="assets/show/titles/title_card_003_LateNightLobster_HD.png" alt="" loading="lazy"><span class="format-label">Lobster Late Night</span></a>
-      <a class="format" href="#" aria-label="Mr Lobster Enterprise"><img src="assets/show/titles/title_card_004_MrLobsterEnterprise_HD.png" alt="" loading="lazy"><span class="format-label">Mr Lobster Enterprise</span></a>
-      <a class="format" href="#" aria-label="Jokes On Lobster"><img src="assets/show/titles/title_card_005_JokesOnLobster_HD.png" alt="" loading="lazy"><span class="format-label">Jokes On Lobster</span></a>
-      <a class="format" href="#" aria-label="Lobster Time"><img src="assets/show/titles/title_card_006_LobsterTime_HD.png" alt="" loading="lazy"><span class="format-label">Lobster Time</span></a>
+      <a class="format" href="#" aria-label="Holiday Mode"><img src="assets/show/sets/holiday.png" alt="" loading="lazy"><span class="format-label">Holiday Mode</span></a>
+      <a class="format" href="#" aria-label="Lobster Late Night"><img src="assets/show/sets/latenight.png" alt="" loading="lazy"><span class="format-label">Lobster Late Night</span></a>
+      <a class="format" href="#" aria-label="Mr Lobster Enterprise"><img src="assets/show/sets/enterprise.png" alt="" loading="lazy"><span class="format-label">Mr Lobster Enterprise</span></a>
+      <a class="format" href="#" aria-label="Jokes On Lobster"><img src="assets/show/sets/jokes.png" alt="" loading="lazy"><span class="format-label">Jokes On Lobster</span></a>
+      <a class="format" href="#" aria-label="Lobster Time"><img src="assets/show/sets/lobstertime.png" alt="" loading="lazy"><span class="format-label">Lobster Time</span></a>
     </div>
 
   </div>
 </section>
-<!-- Section 4 (The cast) goes here, Step D -->
+<section class="cast" id="cast" aria-labelledby="cast-title">
+  <div class="container">
+    <div class="cast-header">
+      <span class="eyebrow">The Cast</span>
+      <h2 id="cast-title">Six characters. <span class="accent">One universe.</span></h2>
+      <p>Three real. Two fantasy. One ambiguous. Mr Lobster lives in both worlds &mdash; everyone else picks a side.</p>
+    </div>
+
+    <div class="cast-grid">
+
+      <article class="cast-card">
+        <div class="cast-portrait"><span class="world-tag both">Reality + Fantasy</span><img class="portrait-tight" src="mr-lobster.jpg" alt="Mr Lobster"></div>
+        <div class="cast-body">
+          <h3 class="cast-name">Mr Lobster</h3>
+          <span class="cast-role">The Lead</span>
+          <p class="cast-beat">Has ideas. Isn&rsquo;t allowed to act on them. So he doesn&rsquo;t &mdash; not out here, anyway.</p>
+        </div>
+      </article>
+
+      <article class="cast-card">
+        <div class="cast-portrait"><span class="world-tag real">Reality</span><img src="assets/show/cast/barry.png" alt="Barry"></div>
+        <div class="cast-body">
+          <h3 class="cast-name">Barry</h3>
+          <span class="cast-role">The Boss</span>
+          <p class="cast-beat">22 years at the same desk. Believes the fax machine should stay because it works. New ideas make him nervous.</p>
+        </div>
+      </article>
+
+      <article class="cast-card">
+        <div class="cast-portrait"><span class="world-tag real">Reality</span><img src="assets/show/cast/linda.png" alt="Linda"></div>
+        <div class="cast-body">
+          <h3 class="cast-name">Linda</h3>
+          <span class="cast-role">The Co-worker</span>
+          <p class="cast-beat">Has a system. The system works. Has not had a new thought since 1994. The reason the office still functions.</p>
+        </div>
+      </article>
+
+      <article class="cast-card">
+        <div class="cast-portrait"><span class="world-tag real">Reality</span><img src="assets/show/cast/rupert.png" alt="Rupert"></div>
+        <div class="cast-body">
+          <h3 class="cast-name">Rupert</h3>
+          <span class="cast-role">The Flatmate · The Only Constant</span>
+          <p class="cast-beat">Extremely tall. Always holding a book. Already accepts Mr Lobster exactly as he is &mdash; which is why fantasy never needs to touch him.</p>
+        </div>
+      </article>
+
+      <article class="cast-card">
+        <div class="cast-portrait"><span class="world-tag fantasy">Fantasy</span><img src="assets/show/cast/lance.png" alt="Lance Beaumont"></div>
+        <div class="cast-body">
+          <h3 class="cast-name">Lance Beaumont</h3>
+          <span class="cast-role">Talk Show Host · Lobster Late Night</span>
+          <p class="cast-beat">The pinnacle of fame as imagined by someone who has never been famous. Professionally warm. Secretly jealous.</p>
+        </div>
+      </article>
+
+      <article class="cast-card">
+        <div class="cast-portrait cast-clam" aria-hidden="true"><span class="world-tag amb">Ambiguous</span>🦪</div>
+        <div class="cast-body">
+          <h3 class="cast-name">The Clam</h3>
+          <span class="cast-role">Director · D. CLAM</span>
+          <p class="cast-beat">Sits in a chair. Wears a tiny bowler hat. Never opens. Never speaks. Possibly the most powerful character in the show.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
 <!-- Section 5 (How he's built) goes here, Step E -->
 
 <footer id="footer">
