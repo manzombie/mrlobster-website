@@ -1,0 +1,10 @@
+# Source / unoptimised assets — keep on disk, never commit
+assets/show/sets/*.png
+assets/show/titles/
+assets/show/cast/*-source.png
+assets/show/cast/*1.png
+assets/show/og-banner.png
+
+# OS
+.DS_Store
+Thumbs.db
